@@ -45,3 +45,27 @@ where
 jobtitle='sales rep' or officeCode=1
 order by
 officeCode,jobtitle;
+
+
+USE CLASSICMODELS;
+/*you can use the FIELD() function to map each order status to a number and sort the result by the result of the FIELD() function:*/
+select orderNumber,status
+from orders
+order by field(status,'in process','on hold','cancelled','resolved','disputed','shipped');
+
+select orderNumber,status
+from orders
+order by status;
+
+/*WHERE clause with the BETWEEN operator example
+
+The BETWEEN operator returns TRUE if a value is in a range of values:
+
+expression BETWEEN low AND high*/
+/*The following query finds employees who locate in offices whose office code is from 1 to 3:*/
+select 
+firstName,lastName,officeCode
+from employees
+where
+officeCode between 1 and 3
+order by officecode;
