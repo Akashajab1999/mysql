@@ -30,3 +30,26 @@ FROM
 ORDER BY 
    quantityOrdered * priceEach DESC;
 
+
+   use classicmodels;
+
+show tables;
+
+/*MySQL ORDER BY and NULL
+In MySQL, NULL comes before non-NULL values. Therefore, when you the ORDER BY clause with the ASC option, NULLs appear first in the result set.*/
+SELECT 
+    firstName, lastName, reportsTo
+FROM
+    employees
+ORDER BY reportsTo;
+
+
+/* if you use the ORDER BY with the DESC option, NULLs will appear last in the result set*/
+SELECT 
+    firstName, lastName, reportsTo
+FROM
+    employees
+ORDER BY reportsTo DESC;
+
+
+
