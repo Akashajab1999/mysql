@@ -83,3 +83,53 @@ where requiredDate between cast('2003-01-01' as date ) and cast('2003-01-31' as 
 /*In this example, we use the CAST() to cast the literal string '2003-01-01' into a DATE value:
 
 CAST('2003-01-01' AS DATE)*/
+
+
+/*MYSQL LIKE OPERATOR */
+
+/*A) Using MySQL LIKE operator with the percentage (%) wildcard examples
+This example uses the LIKE operator to find employees whose first names START WITH the letter a:*/
+SELECT employeeNumber,lastName,firstName
+from employees
+where firstName like 'a%';
+
+/*example uses the LIKE operator to find employees whose last names ENDS WITH the literal string on e.g., Patterson, Thompson:*/
+
+select employeeNumber,
+lastName,firstName
+from employees
+where lastName like '%on';
+
+
+/*the following query uses the LIKE operator to find all employees whose last names contain the substring on:*/
+select employeeNumber,lastName,firstName
+from employees 
+where lastname like '%on%';
+
+
+/*Using MySQL LIKE operator with underscore( _ ) wildcard examples
+To find employees whose first names start with the letter T , end with the letter m, and contain any single character between e.g., Tom , Tim, you use the underscore (_) wildcard to construct the pattern as follows:*/
+
+select employeeNumber,lastName,firstName
+from employees
+where firstname like'T_M';
+
+/*MySQL NOT LIKE operator example*/
+/*suppose you want to search for employees whose last names don’t start with the letter B, you can use the NOT LIKE operator as follows:*/
+select employeeNumber,lastName,firstName
+from employees
+where lastName not like 'B%';
+
+/*LIKE operator with the ESCAPE clause*/
+/*if you want to find products whose product codes contain the string _20 , you can use the pattern %\_20% with the default escape character:*/
+
+select productCode,productName
+from products
+where productName like '%\_20%';
+
+
+/*you can specify a different escape character e.g., $ using the ESCAPE clause:*/
+select productCode,productName
+from 
+products
+where productCode like '%$_20%' escape '$';
