@@ -133,3 +133,6 @@ select productCode,productName
 from 
 products
 where productCode like '%$_20%' escape '$';
+
+USE CLASSICMODELS;
+SELECT * FROM PRODUCTS;
